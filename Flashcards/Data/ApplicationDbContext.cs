@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Flashcards.Models;
 
 namespace Flashcards.Data
 {
@@ -9,5 +10,6 @@ namespace Flashcards.Data
             : base(options)
         {
         }
+        public DbSet<Flashcards.Models.Card>? Card { get; set; }
     }
 }
