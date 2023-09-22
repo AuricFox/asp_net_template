@@ -3,6 +3,7 @@
 Flashcards used to prepare for job interviews and to refresh programming knowledge. Some topics include computer science concepts such as datatypes, datastructures, and other terminology; meanwhile, other topics focus on the programming language itself.
 
 This is my first real attempt at writing a full-stack application using C# and MVCs (models views and controllers).  
+
 Model: class/object that manages the behavior and data  
 View: manages the display of the web page (in this case a Razor HTML page)  
 Controller: connects models, business logic, and web pages
@@ -11,7 +12,7 @@ Controller: connects models, business logic, and web pages
 
 create a C# class/model.
 
-STEP 1: Right click the file named `Model`, select `Add` then `Class`
+STEP 1: Right click the file named `Model`, select `Add` then `Class`  
 STEP 2: Select `class` and give it a class name `Card`  
 
 ## Creating a Controller
@@ -20,7 +21,7 @@ Creates a new controller with corresponding view pages.
 
 STEP 1: Right click `Controllers`, select `Add` and `Controller`  
 STEP 2: Select `MVC Controller with views, using Entity Framework`  
-STEP 3: Select model/class that will be used (i.e. `Card`)
+STEP 3: Select model/class that will be used (i.e. `Card`)  
 STEP 4: Rename New data context type to `FlashcardsWebApp.Data.ApplicationDbContext`  
 STEP 5: Click `Add`  
 STEP 6: Check `Generate View`, `Reference script library`, and `Use a layout page`  
