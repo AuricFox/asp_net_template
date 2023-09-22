@@ -56,7 +56,7 @@ namespace Flashcards.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Question,code,image,Anwser")] Card card)
+        public async Task<IActionResult> Create([Bind("id,Category,Question,code,image,Anwser")] Card card)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace Flashcards.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Question,code,image,Anwser")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Category,Question,code,image,Anwser")] Card card)
         {
             if (id != card.id)
             {
