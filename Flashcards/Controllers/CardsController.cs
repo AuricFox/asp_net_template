@@ -22,9 +22,32 @@ namespace Flashcards.Controllers
         // GET: Cards
         public async Task<IActionResult> Index()
         {
-              return _context.Card != null ? 
-                          View(await _context.Card.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Card'  is null.");
+            return _context.Card != null ? 
+                View(await _context.Card.ToListAsync()) :
+                Problem("Entity set 'ApplicationDbContext.Card'  is null.");
+        }
+
+        // Get all Card categories
+        [HttpPost]      // Handle POST requests for form submittions
+        public async Task<IActionResult> Flashcards(string categoryId)
+        {
+            // Load the list of categories to populate the dropdown
+            var categories = await _context.Card
+                .Select(c => c.Category)
+                .Distinct()
+                .ToListAsync();
+            var categoryList = new SelectList(categories, "Category", "Category");
+
+            // Filter the "Card" records based on the selected category
+            var filteredCards = await _context.Card
+                .Where(c => c.Category == categoryId)
+                .ToListAsync();
+
+            // Store the data in ViewBag to pass to the view
+            ViewBag.CategoryList = categoryList;
+            ViewBag.FilteredCards = filteredCards;
+
+            return View();
         }
 
         // GET: Cards/Details/5
