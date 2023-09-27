@@ -2,9 +2,6 @@
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 
-// Database for user credentials
-// NOTE: Currently not being used
-
 namespace Flashcards.Data.Migrations
 {
     public partial class CreateIdentitySchema : Migration

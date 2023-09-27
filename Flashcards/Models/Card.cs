@@ -12,11 +12,11 @@
 
         public string? Image { get; set; }
 
-        public string Anwser { get; set; }
+        public string Answer { get; set; }
 
-        public Card() 
+        public Card()
         {
-
+            // Placeholder
         }
     }
 }

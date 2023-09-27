@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Flashcards-f2ac1004-f6ac-4a52-b39a-bd1c99b3770c</UserSecretsId>
+    <UserSecretsId>aspnet-Flashcards-17fdcf98-a2b9-4cf3-9b2c-1299e1551906</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

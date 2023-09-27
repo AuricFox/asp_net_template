@@ -33,11 +33,11 @@ body {
     transform-style: preserve-3d;
 }
 
-.flashcard:hover {
-    transform: rotateY(180deg);
-}
+    .flashcard:hover {
+        transform: rotateY(180deg);
+    }
 
-.front, 
+.front,
 .back {
     width: 100%;
     height: 100%;

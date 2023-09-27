@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Flashcards.Data;
 using Flashcards.Models;
-using System.Drawing.Printing;
-using Microsoft.Extensions.Logging;
 
 namespace Flashcards.Controllers
 {
@@ -16,69 +14,25 @@ namespace Flashcards.Controllers
     {
         private readonly ApplicationDbContext _context;
 
-        private readonly ILogger<CardsController> _logger;
-
-        public CardsController(ApplicationDbContext context, ILogger<CardsController> logger)
+        public CardsController(ApplicationDbContext context)
         {
             _context = context;
-            _logger = logger;
         }
 
+        // ==============================================================================================
+        // MAIN VIEW METHODS
+        // ==============================================================================================
         // GET: Cards
         public async Task<IActionResult> Index()
         {
-            _logger.LogInformation("Display Index");
-
-            return _context.Card != null ? 
-                View(await _context.Card.ToListAsync()) :
-                Problem("Entity set 'ApplicationDbContext.Card'  is null.");
+              return _context.Card != null ? 
+                          View(await _context.Card.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Card'  is null.");
         }
 
-        public string Test(string testing)
-        {
-            return $"This is a TEST for {testing}";
-        }
-
-        // Get all Card categories
-        [HttpPost]
-        public async Task<IActionResult> Display_Cards(string categoryId)
-        {
-            _logger.LogInformation($"Display Flashcards, Category: {categoryId}.");
-            Console.WriteLine("Working\n");
-            if (_context.Card == null)
-            {
-                _logger.LogError($"Error Displaying Flashcards!");
-                return NotFound();
-            }
-            Console.WriteLine("Working\n");
-            // Load the list of categories to populate the dropdown
-            var categories = await _context.Card
-                .Select(c => c.Category)
-                .Distinct()
-                .ToListAsync();
-
-            var categoryList = new SelectList(categories, "Category", "Category");
-            if (string.IsNullOrEmpty(categoryId))
-            {
-                // If categoryId is null, show all cards
-                var allCards = await _context.Card.ToListAsync();
-                ViewBag.CategoryList = categoryList;
-                ViewBag.FilteredCards = allCards;
-                return View();
-            }
-
-            // Filter the "Card" records based on the selected category
-            var filteredCards = await _context.Card
-                .Where(c => c.Category == categoryId)
-                .ToListAsync();
-
-            // Store the data in ViewBag to pass to the view
-            ViewBag.CategoryList = categoryList;
-            ViewBag.FilteredCards = filteredCards;
-
-            return View();
-        }
-
+        // ==============================================================================================
+        // CARD DATABASE QUERIES
+        // ==============================================================================================
         // GET: Cards/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -97,18 +51,20 @@ namespace Flashcards.Controllers
             return View(card);
         }
 
+        // ==============================================================================================
         // GET: Cards/Create
         public IActionResult Create()
         {
             return View();
         }
 
+        // ==============================================================================================
         // POST: Cards/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Category,Question,code,image,Anwser")] Card card)
+        public async Task<IActionResult> Create([Bind("id,Category,Question,Code,Image,Answer")] Card card)
         {
             if (ModelState.IsValid)
             {
@@ -119,6 +75,7 @@ namespace Flashcards.Controllers
             return View(card);
         }
 
+        // ==============================================================================================
         // GET: Cards/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -135,12 +92,13 @@ namespace Flashcards.Controllers
             return View(card);
         }
 
+        // ==============================================================================================
         // POST: Cards/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Category,Question,code,image,Anwser")] Card card)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Category,Question,Code,Image,Answer")] Card card)
         {
             if (id != card.id)
             {
@@ -170,6 +128,7 @@ namespace Flashcards.Controllers
             return View(card);
         }
 
+        // ==============================================================================================
         // GET: Cards/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -188,6 +147,7 @@ namespace Flashcards.Controllers
             return View(card);
         }
 
+        // ==============================================================================================
         // POST: Cards/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -207,6 +167,7 @@ namespace Flashcards.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        // ==============================================================================================
         private bool CardExists(int id)
         {
           return (_context.Card?.Any(e => e.id == id)).GetValueOrDefault();
