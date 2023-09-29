@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Flashcards.Data;
 using Flashcards.Models;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Controller;
 
 namespace Flashcards.Controllers
 {
     public class CardsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ILogger<CardsController> _logger;
 
-        public CardsController(ApplicationDbContext context)
+        public CardsController(ApplicationDbContext context, ILogger<CardsController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // ==============================================================================================
@@ -28,6 +31,45 @@ namespace Flashcards.Controllers
               return _context.Card != null ? 
                           View(await _context.Card.ToListAsync()) :
                           Problem("Entity set 'ApplicationDbContext.Card'  is null.");
+        }
+
+        // ==============================================================================================
+        // Get all Card categories
+        public async Task<IActionResult> Display_Cards(string categoryId)
+        {
+            _logger.LogInformation($"Display Flashcards, Category: {categoryId}.");
+            if (_context.Card == null)
+            {
+                _logger.LogError($"Error Displaying Flashcards!");
+                return NotFound();
+            }
+
+            // Load the list of categories to populate the dropdown
+            var categories = await _context.Card
+                .Select(c => c.Category)
+                .Distinct()
+                .ToListAsync();
+            
+            var categoryList = new SelectList(categories, "Category", "Category");
+            if (string.IsNullOrEmpty(categoryId))
+            {
+                // If categoryId is null, show all cards
+                var allCards = await _context.Card.ToListAsync();
+                ViewBag.CategoryList = categoryList;
+                ViewBag.FilteredCards = allCards;
+                return View();
+            }
+
+            // Filter the "Card" records based on the selected category
+            var filteredCards = await _context.Card
+                .Where(c => c.Category == categoryId)
+                .ToListAsync();
+
+            // Store the data in ViewBag to pass to the view
+            ViewBag.CategoryList = categoryList;
+            ViewBag.FilteredCards = filteredCards;
+
+            return View();
         }
 
         // ==============================================================================================

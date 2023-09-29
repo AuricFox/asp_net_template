@@ -1,13 +1,17 @@
 ﻿@model Flashcards.Models.Card
 
 @{
-    ViewData["Title"] = "DisplayFlashcards";
-    Console.WriteLine("Display Flashcards");
+    ViewData["Title"] = "Display_Cards";
 }
 
-<form method="post" asp-action="DisplayFlashcards">
-    <select asp-for="Category" asp-items="ViewBag.CategoryList">
+<form asp-action="Display_Cards">
+    <label for="category">Select a Category:</label>
+    <select id="category" name="category">
         <option value="">Select a Category</option>
+        @foreach (var category in Model.Category)
+        {
+            <option value="@category">@category</option>
+        }
     </select>
     <button type="submit">Submit</button>
 </form>
@@ -24,6 +28,7 @@
             <div class="flashcard">
                 <div class="front">
                     <p>@card.Question</p>
+                    <code>@card.Code</code>
                 </div>
                 <div class="back">
                     <p>@card.Answer</p>

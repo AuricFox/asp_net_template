@@ -2,6 +2,11 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
+
+@*
+NOTE: Login and registration is disabled
+*@
+
 <ul class="navbar-nav">
 @if (SignInManager.IsSignedIn(User))
 {
