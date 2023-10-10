@@ -11,5 +11,10 @@ namespace Flashcards.Data
         {
         }
         public DbSet<Flashcards.Models.Card>? Card { get; set; }
+
+        public IEnumerable<string> GetDistinctCategories()
+        {
+            return Card.Select(card => card.Category).Distinct();
+        }
     }
 }
