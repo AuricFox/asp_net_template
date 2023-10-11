@@ -5,19 +5,15 @@
 }
 
 <form asp-action="Display_Cards">
-    <label for="category">Select a Category:</label>
-    <select id="category" name="category">
+    
+    <select asp-for="Category" asp-items="ViewBag.CateroryList">
         <option value="">Select a Category</option>
-        @foreach (var category in Model.Category)
-        {
-            <option value="@category">@category</option>
-        }
     </select>
     <button type="submit">Submit</button>
 </form>
 
 <div class="flashcard-container">
-    @if (ViewBag.FilteredCards == null || !ViewBag.FilteredCards.Any())
+    @if (ViewBag.FilteredCards == null)
     {
         <p>No cards found for the selected category or no category selected.</p>
     }

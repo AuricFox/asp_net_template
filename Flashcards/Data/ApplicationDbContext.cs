@@ -12,8 +12,12 @@ namespace Flashcards.Data
         }
         public DbSet<Flashcards.Models.Card>? Card { get; set; }
 
-        public IEnumerable<string> GetDistinctCategories()
+        public IEnumerable<string>? GetDistinctCategories()
         {
+            // Intial DB may be empty, return null for this edgecase
+            if (Card == null) return null;
+
+            // Return the distinct categories in the DB
             return Card.Select(card => card.Category).Distinct();
         }
     }

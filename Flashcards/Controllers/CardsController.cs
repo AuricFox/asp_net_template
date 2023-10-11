@@ -45,12 +45,9 @@ namespace Flashcards.Controllers
             }
 
             // Load the list of categories to populate the dropdown
-            var categories = await _context.Card
-                .Select(c => c.Category)
-                .Distinct()
-                .ToListAsync();
-            
+            var categories = _context.GetDistinctCategories();
             var categoryList = new SelectList(categories, "Category", "Category");
+
             if (string.IsNullOrEmpty(categoryId))
             {
                 // If categoryId is null, show all cards
