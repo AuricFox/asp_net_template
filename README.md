@@ -1,6 +1,4 @@
-# flashcards
-
-Flashcards used to prepare for job interviews and to refresh programming knowledge. Some topics include computer science concepts such as datatypes, datastructures, and other terminology; meanwhile, other topics focus on the programming language itself.
+# Net Practice
 
 This is my first real attempt at writing a full-stack application using C# and MVCs (models views and controllers).  
 
