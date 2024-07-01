@@ -34,7 +34,7 @@ STEP 4: Verify installation in terminal: `dotnet --version`
 STEP 1: Select `Create a new project`  
 STEP 2: Select `C#`, `Windows`, and `Web` to narrow search results  
 STEP 3: Click `ASP.NET Core Web Application`  
-STEP 4: Click `Next` 
+STEP 4: Click `Next`  
 STEP 5: Name project and set path  
 STEP 6: Click `Create`  
 STEP 7: Select `Web Application (Model-View-Controller)`  
