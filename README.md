@@ -1,10 +1,59 @@
 # Net Practice
 
-This is my first real attempt at writing a full-stack application using C# and MVCs (models views and controllers).  
+This is resource to help building a full-stack application using C# and MVCs (models views and controllers).  
 
 Model: class/object that manages the behavior and data  
 View: manages the display of the web page (in this case a Razor HTML page)  
 Controller: connects models, business logic, and web pages
+
+## Setting Up Editor
+
+### Visual Studio (IDE)
+
+STEP 1: download the [Visual Studio Community](https://visualstudio.microsoft.com/free-developer-offers/) package.  
+STEP 2: Navigate through the displayed download prompts.  
+STEP 3: Select desired workload packages:  
+* .NET desktop development
+* ASP.NET and web development
+* etc.  
+
+STEP 4: Click install  
+STEP 5: Launch Application  
+
+### VS Code (Text Editor)
+
+STEP 1: download [Visual Studio Code](https://code.visualstudio.com/).  
+STEP 2: Install the C# Extension by Microsoft.  
+STEP 3: Install [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet).  
+STEP 4: Verify installation in terminal: `dotnet --version`  
+
+## Project Setup
+
+### Visual Studio (IDE)
+
+STEP 1: Select `Create a new project`  
+STEP 2: Select `C#`, `Windows`, and `Web` to narrow search results  
+STEP 3: Click `ASP.NET Core Web Application`  
+STEP 4: Click `Next` 
+STEP 5: Name project and set path  
+STEP 6: Click `Create`  
+STEP 7: Select `Web Application (Model-View-Controller)`  
+STEP 8: Change authentication to `Individual User Accounts`  
+STEP 9: Click `Create`  
+
+### VS Code (Text Editor)
+
+STEP 1: In the terminal, cd into your working directory and run:  
+* `dotnet new console` for a console application  
+* `dotnet new web` for a web application  
+
+STEP 2: Open the project by running `code MyProjectName`  
+STEP 3: Build your project by entering `dotnet build` into the terminal.
+
+## Running Application
+
+In Visual Studio click `IIS Express` or a green play button with the project name next to it.  
+When using a terminal, cd into your working directory and enter the command `dotnet run`.
 
 ## Creating a Model
 
@@ -38,52 +87,3 @@ PM> enable-migrations
 PM> add-migration "DbName"  //DbName can be anything
 PM> update-database         //Creates tables for you
 ```
-
-## Project Setup
-
-### Visual Studio (IDE)
-
-STEP 1: Select `Create a new project`  
-STEP 2: Select `C#`, `Windows`, and `Web` to narrow search results  
-STEP 3: Click `ASP.NET Core Web Application`  
-STEP 4: Click `Next` 
-STEP 5: Name project and set path  
-STEP 6: Click `Create`  
-STEP 7: Select `Web Application (Model-View-Controller)`  
-STEP 8: Change authentication to `Individual User Accounts`  
-STEP 9: Click `Create`  
-
-### VS Code (Text Editor)
-
-STEP 1: In the terminal, cd into your working directory and run:  
-* `dotnet new console` for a console application  
-* `dotnet new web` for a web application  
-
-STEP 2: Open the project by running `code MyProjectName`  
-STEP 3: Build your project by entering `dotnet build` into the terminal.
-
-## Running Application
-
-In Visual Studio click `IIS Express` or a green play button with the project name next to it.  
-When using a terminal, cd into your working directory and enter the command `dotnet run`.
-
-## Setting Up Editor
-
-### Visual Studio (IDE)
-
-STEP 1: download the [Visual Studio Community](https://visualstudio.microsoft.com/free-developer-offers/) package.  
-STEP 2: Navigate through the displayed download prompts.  
-STEP 3: Select desired workload packages:  
-* .NET desktop development
-* ASP.NET and web development
-* etc.  
-
-STEP 4: Click install  
-STEP 5: Launch Application  
-
-### VS Code (Text Editor)
-
-STEP 1: download [Visual Studio Code](https://code.visualstudio.com/).  
-STEP 2: Install the C# Extension by Microsoft.  
-STEP 3: Install [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet).  
-STEP 4: Verify installation in terminal: `dotnet --version`  
