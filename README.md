@@ -57,14 +57,20 @@ When using a terminal, cd into your working directory and enter the command `dot
 
 ## Creating a Model
 
-create a C# class/model.
+Models are application data and behavior in terms of the problem domain and is independent of the UI. They 
+consist of classes within the application that house the properties and methods. For example, a customer model 
+stores all the relavent information and functionality (name, age, etc.).
+
+Creating a Model:  
 
 STEP 1: Right click the file named `Model`, select `Add` then `Class`  
 STEP 2: Select `class` and give it a class name `Card`  
 
 ## Creating a Controller
 
-Creates a new controller with corresponding view pages.
+Controllers are responsible for handling an HTTP request. They route traffic to requested pages and handle form posts. They correspond with view pages.
+
+Creating a Controller:  
 
 STEP 1: Right click `Controllers`, select `Add` and `Controller`  
 STEP 2: Select `MVC Controller with views, using Entity Framework`  
@@ -75,6 +81,10 @@ STEP 6: Check `Generate View`, `Reference script library`, and `Use a layout pag
 STEP 7: Click `Add`  
 
 ## Creating a View
+
+A view is the HTML markup that is displayed to the user, or in other words, the web page that is visiable on the client's side.
+
+
 
 ## Creating a Database (Data Migration)
 
